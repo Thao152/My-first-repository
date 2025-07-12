@@ -27,3 +27,23 @@ INSERT into club_member_info_cleaned
 select * from club_member_info;
 # Check the result:
 select * from club_member_info_cleaned;
+
+# Clean Table club_member_info_cleaned
+
+# Clean Full Name
+update club_member_info_cleaned
+set full_name = trim(full_name);
+# Clean Age
+Update club_member_info_cleaned
+set age = 70 where age >100;
+# Clean Martial Status
+Step 1: 
+select martial_status, count(*)
+from club_member_info_cleaned
+group by 1
+order by 2 desc;
+Step 2:
+update club_member_info_cleaned
+set martial_status = "married"
+where martial_status ="";
+
